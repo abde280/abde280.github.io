@@ -1,5 +1,5 @@
 /* =========================================================
-   📝 Page PROJETS : réalisations professionnelles (alimentent aussi le tableau de synthèse)
+   📝 Page PROJETS : réalisations professionnelles
    ---------------------------------------------------------
    3 projets attendus : 1 scolaire, 1 entreprise, 1 personnel.
    Chaque projet a sa procédure en PDF, téléchargeable depuis le site.
@@ -11,7 +11,7 @@ Object.assign(PORTFOLIO, {
      cadre : "Scolaire", "Entreprise" ou "Personnel"
      statut : "Opérationnel", "En cours" ou "À venir"
        → un projet "À venir" s'affiche en carte grisée, sans fiche,
-         et n'entre pas encore dans le tableau de synthèse.
+         et sans compétences affichées.
      resume : mini contexte de 2-3 lignes
      competences : id du bloc 1 mobilisés (C1…C6)
      architecture : les briques du schéma, dans l'ordre du flux (facultatif)
@@ -33,7 +33,7 @@ Object.assign(PORTFOLIO, {
         { nom: "GLPI 11", detail: "Gestion de parc · Helpdesk" },
         { nom: "MariaDB", detail: "Base de données" }
       ],
-      competences: ["C1", "C5"],   // identique à la ligne GLPI du tableau de synthèse
+      competences: ["C1", "C5"],
       // Mets ton PDF dans le dossier /documents avec exactement ce nom
       procedure: "documents/procedure-glpi.pdf"
     },
