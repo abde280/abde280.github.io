@@ -30,7 +30,7 @@ Object.assign(PORTFOLIO, {
       description:
         "Épreuve orale appuyée sur ce portfolio et sur mes réalisations professionnelles menées en formation et en entreprise. " +
         "L'ensemble des réalisations doit mobiliser toutes les compétences du bloc 1.",
-      documents: []
+      documents: [{ label: "Télécharger le tableau de synthèse (Excel)", url: "documents/tableau-synthese-E5.xlsx" }]
     },
     {
       code: "E6",
