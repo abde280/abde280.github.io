@@ -84,6 +84,12 @@
   modal.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
 
+  // Compétences en étiquettes : [code, intitulé]
+  function compTags(list) {
+    return `<div class="comp-tags">${list.map(([code, nom]) =>
+      `<span class="comp-tag"><b>${esc(code)}</b><span>${esc(nom)}</span></span>`).join("")}</div>`;
+  }
+
   function statutBadge(s) {
     return `<span class="statut statut--${slug(s)}"><span class="dot"></span>${esc(s)}</span>`;
   }
@@ -109,11 +115,10 @@
     })();
 
     // Chiffres clés — calculés depuis data.js, donc toujours justes
-    const couvertes = new Set((D.tableauSynthese || []).flatMap((s) => s.lignes.flatMap((l) => l.competences))).size;
     const certifsOk = D.certifications.filter((c) => c.statut === "Obtenue").length;
     html("#stats", [
       [`${realisees().length}/${D.realisations.length}`, "Projets réalisés", "projets.html"],
-      [`${couvertes}/${D.competencesE5.length}`, "Compétences du bloc 1 couvertes", "epreuves.html"],
+      ["Oct. 2025", `En alternance au ${D.entreprise.nom}`, "index.html#apropos"],
       [D.veille.articles.length, "Articles dans ma veille", "veille.html"],
       certifsOk ? [certifsOk, certifsOk > 1 ? "Certifications obtenues" : "Certification obtenue", "certifications.html"]
                 : [D.epreuves.length, "Épreuves préparées (E5 · E6 · E7)", "epreuves.html"]
@@ -172,11 +177,8 @@
 
   /* ================= PAGE : ÉPREUVES ================= */
   function renderEpreuves() {
-    // Couverture du bloc 1, calculée depuis le tableau de synthèse officiel (js/data/epreuves.js)
-    const lignes = (D.tableauSynthese || []).flatMap((s) => s.lignes);
-    const couvertes = D.competencesE5.filter((c) => lignes.some((l) => l.competences.includes(c.id)));
     html("#epreuves-list", D.epreuves.map((e) => {
-      const comps = e.competences === "bloc1" ? D.competencesE5.map((c) => [c.id, c.nom]) : (e.competences || []).map((n) => ["", n]);
+      const comps = e.competences === "bloc1" ? D.competencesE5.map((c) => [c.id, c.nom]) : (e.competences || []).map((n) => [e.code_bloc || e.codeBloc || e.blocCode || e.code, n]);
       return `
       <article class="card epreuve reveal">
         <div class="epreuve__code">${esc(e.code)}</div>
@@ -186,9 +188,7 @@
           <p>${esc(e.description)}</p>
           ${comps.length ? `
           <h4 class="mini">Compétences évaluées${e.bloc ? ` · ${esc(e.bloc)}` : ""}</h4>
-          <ul class="comp-list">${comps.map(([id, nom]) => `<li>${id ? `<strong>${id}</strong>` : ""}${esc(nom)}</li>`).join("")}</ul>` : ""}
-          ${e.code === "E5" && lignes.length ? `<p class="coverage-line ${couvertes.length === D.competencesE5.length ? "ok" : "warn"}">
-            ${couvertes.length === D.competencesE5.length ? "✔" : "⚠️"} ${couvertes.length}/${D.competencesE5.length} compétences mobilisées par mes ${lignes.length} réalisations professionnelles (détail dans le tableau de synthèse).</p>` : ""}
+          ${compTags(comps)}` : ""}
           <div class="docs">
             ${e.code === "E5" ? '<a href="projets.html">🗂️ Voir mes projets</a>' : ""}
             ${e.code === "E7" ? '<a href="veille.html">🔎 Voir ma veille</a>' : ""}
@@ -222,7 +222,7 @@
         <div class="chips chips--sm">${r.environnement.slice(0, 4).map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
         ${!aVenir(r) && r.competences.length ? `
         <h4 class="mini">Compétences mobilisées</h4>
-        <ul class="comp-list comp-list--sm">${r.competences.map((c) => `<li><strong>${c}</strong>${esc(compName(c))}</li>`).join("")}</ul>` : ""}
+        ${compTags(r.competences.map((c) => [c, compName(c)]))}` : ""}
         ${aVenir(r) ? '<span class="project__soon mono">Bientôt disponible</span>' : `
         <div class="project__actions">
           ${r.procedure ? `<a class="btn btn--small btn--primary" href="${esc(r.procedure)}" download>📄 Procédure (PDF)</a>` : ""}
