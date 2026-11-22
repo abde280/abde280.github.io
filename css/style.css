@@ -449,3 +449,9 @@ ul { list-style: none; }
 .empty__icon { font-size: 2.5rem; display: block; margin-bottom: .6rem; }
 .empty h3 { font-size: 1.2rem; margin-bottom: .4rem; }
 .empty p { color: var(--muted); max-width: 520px; margin: 0 auto; }
+.synth__section th { background: var(--accent-soft) !important; color: var(--accent); text-align: left !important;
+  font-family: var(--mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+.synth tbody tr.synth__section { cursor: default; }
+.synth td:first-child { min-width: 320px; }
+.synth__periode { white-space: nowrap; font-family: var(--mono); font-size: .8rem !important; color: var(--muted); }
+.synth tbody tr { cursor: default; }
