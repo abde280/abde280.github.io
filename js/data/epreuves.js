@@ -69,6 +69,8 @@ Object.assign(PORTFOLIO, {
       code: "E5",
       titre: "Support et mise à disposition de services informatiques",
       format: "Oral · 40 min · coef. 4",
+      bloc: "Bloc 1 — Support et mise à disposition de services informatiques",
+      competences: "bloc1",   // = la liste competencesE5 ci-dessus
       statut: "En cours",
       description:
         "Épreuve orale appuyée sur ce portfolio et sur le tableau de synthèse des réalisations professionnelles " +
@@ -79,6 +81,12 @@ Object.assign(PORTFOLIO, {
       code: "E6",
       titre: "Administration des systèmes et des réseaux",
       format: "Pratique et orale · coef. 4",
+      bloc: "Bloc 2 — Administration des systèmes et des réseaux (option SISR)",
+      competences: [
+        "Concevoir une solution d'infrastructure réseau",
+        "Installer, tester et déployer une solution d'infrastructure réseau",
+        "Exploiter, dépanner et superviser une solution d'infrastructure réseau"
+      ],
       statut: "En cours",
       description:
         "Épreuve de l'option SISR. Elle s'appuie sur deux réalisations professionnelles de mon dossier, " +
@@ -89,6 +97,14 @@ Object.assign(PORTFOLIO, {
       code: "E7",
       titre: "Cybersécurité des services informatiques",
       format: "Écrit · 4 h · coef. 4",
+      bloc: "Bloc 3 — Cybersécurité des services informatiques",
+      competences: [
+        "Protéger les données à caractère personnel",
+        "Préserver l'identité numérique de l'organisation",
+        "Sécuriser les équipements et les usages des utilisateurs",
+        "Garantir la disponibilité, l'intégrité et la confidentialité des services informatiques et des données de l'organisation face à des cyberattaques",
+        "Assurer la cybersécurité d'une infrastructure réseau, d'un système, d'un service"
+      ],
       statut: "À venir",
       description:
         "Épreuve écrite sur un cas d'entreprise. Elle se prépare en cours, en pratiquant sur mes maquettes et en suivant " +

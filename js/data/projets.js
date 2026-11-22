@@ -33,7 +33,7 @@ Object.assign(PORTFOLIO, {
         { nom: "GLPI 11", detail: "Gestion de parc · Helpdesk" },
         { nom: "MariaDB", detail: "Base de données" }
       ],
-      competences: ["C1", "C2", "C5"],
+      competences: ["C1", "C5"],   // identique à la ligne GLPI du tableau de synthèse
       // Mets ton PDF dans le dossier /documents avec exactement ce nom
       procedure: "documents/procedure-glpi.pdf"
     },
