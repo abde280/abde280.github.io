@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes projets — Portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio BTS SIO option SISR — Épreuve E5">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+</head>
+<body data-page="projets">
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="nav" id="nav"></header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="tag" id="projets-count"></span>
+        <h1>Mes projets</h1>
+        <p>Mes réalisations en formation, en entreprise et à titre personnel. Chaque projet est documenté pour qu'un autre technicien puisse le reprendre.</p>
+      </div>
+    </section>
+    <section class="section section--first">
+      <div class="container">
+        <div class="filters" id="filters"></div>
+        <div class="projects" id="projects"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" data-close aria-label="Fermer">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="js/data/accueil.js"></script>
+  <script src="js/data/epreuves.js"></script>
+  <script src="js/data/projets.js"></script>
+  <script src="js/data/veille.js"></script>
+  <script src="js/data/certifications.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes épreuves — Portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio BTS SIO option SISR — Épreuve E5">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+</head>
+<body data-page="epreuves">
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="nav" id="nav"></header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="tag">BTS SIO SISR · Session 2027</span>
+        <h1>Mes épreuves</h1>
+        <p>Les épreuves professionnelles du BTS SIO option SISR, numérotées E5, E6 et E7 depuis la session 2025. Les épreuves E5 et E6 s'appuient sur des réalisations documentées et vérifiables ; l'E7 est un écrit.</p>
+      </div>
+    </section>
+    <section class="section section--first">
+      <div class="container"><div class="epreuves" id="epreuves-list"></div></div>
+    </section>
+    <section class="section section--alt" id="synthese">
+      <div class="container">
+        <h2 class="section__title"><span class="num">E5.</span> Tableau de synthèse</h2>
+        <p class="section__intro">Correspondance entre mes réalisations et les compétences du bloc 1. Cliquez sur une ligne pour ouvrir la fiche.</p>
+        <div class="coverage" id="coverage"></div>
+        <div class="table-wrap"><table class="synth" id="synth-table"></table></div>
+        <div class="synth__legend" id="synth-legend"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" data-close aria-label="Fermer">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="js/data/accueil.js"></script>
+  <script src="js/data/epreuves.js"></script>
+  <script src="js/data/projets.js"></script>
+  <script src="js/data/veille.js"></script>
+  <script src="js/data/certifications.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

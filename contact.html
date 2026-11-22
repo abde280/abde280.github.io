@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio BTS SIO option SISR — Épreuve E5">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+</head>
+<body data-page="contact">
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="nav" id="nav"></header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="tag">LinkedIn</span>
+        <h1>Contact</h1>
+        <p>Une question sur un projet, une proposition d'alternance ou de poursuite d'études : le plus simple est l'email.</p>
+      </div>
+    </section>
+    <section class="section section--first">
+      <div class="container contact-layout">
+        <div class="contact contact--col" id="contact-links"></div>
+        <form class="card form" id="contact-form">
+          <h3>Écrire un message</h3>
+          <label>Nom<input name="nom" required autocomplete="name"></label>
+          <label>Objet<input name="objet" required></label>
+          <label>Message<textarea name="message" rows="6" required></textarea></label>
+          <button class="btn btn--primary" type="submit">Ouvrir dans ma messagerie</button>
+          <p class="form__note">Le bouton ouvre votre logiciel de messagerie avec le message pré-rempli : aucune donnée n'est stockée sur ce site.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" data-close aria-label="Fermer">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="js/data/accueil.js"></script>
+  <script src="js/data/epreuves.js"></script>
+  <script src="js/data/projets.js"></script>
+  <script src="js/data/veille.js"></script>
+  <script src="js/data/certifications.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
