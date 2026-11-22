@@ -109,7 +109,7 @@
     })();
 
     // Chiffres clés — calculés depuis data.js, donc toujours justes
-    const couvertes = new Set(realisees().flatMap((r) => r.competences)).size;
+    const couvertes = new Set(D.tableauSynthese.flatMap((s) => s.lignes.flatMap((l) => l.competences))).size;
     const certifsOk = D.certifications.filter((c) => c.statut === "Obtenue").length;
     html("#stats", [
       [`${realisees().length}/${D.realisations.length}`, "Projets réalisés", "projets.html"],
@@ -187,30 +187,30 @@
         </div>
       </article>`).join(""));
 
-    // Tableau de synthèse généré automatiquement
+    // Tableau de synthèse : repris du fichier officiel (js/data/epreuves.js → tableauSynthese)
     const comps = D.competencesE5;
-    const R = realisees();
-    const count = (id) => R.filter((r) => r.competences.includes(id)).length;
+    const lignes = D.tableauSynthese.flatMap((s) => s.lignes);
+    const count = (id) => lignes.filter((l) => l.competences.includes(id)).length;
     html("#synth-table",
-      `<thead><tr><th>Réalisation</th>${comps.map((c) => `<th title="${esc(c.nom)}">${c.id}</th>`).join("")}</tr></thead>
-       <tbody>${R.map((r) => `
-         <tr data-id="${r.id}" tabindex="0">
-           <td><strong>${esc(r.titre)}</strong><small>${esc(r.cadre)}</small></td>
-           ${comps.map((c) => `<td>${r.competences.includes(c.id) ? '<span class="check" aria-label="oui">✔</span>' : ""}</td>`).join("")}
-         </tr>`).join("")}</tbody>
-       <tfoot><tr><td>Total</td>${comps.map((c) => `<td>${count(c.id)}</td>`).join("")}</tr></tfoot>`);
-    const table = $("#synth-table");
-    table.addEventListener("click", (e) => { const tr = e.target.closest("tbody tr"); if (tr) openRealisation(tr.dataset.id); });
-    table.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.dataset.id) openRealisation(e.target.dataset.id); });
+      `<thead><tr><th>Réalisation professionnelle</th><th>Période</th>${comps.map((c) => `<th title="${esc(c.nom)}">${c.id}</th>`).join("")}</tr></thead>
+       ${D.tableauSynthese.map((s) => `
+       <tbody>
+         <tr class="synth__section"><th colspan="${comps.length + 2}">${esc(s.section)}</th></tr>
+         ${s.lignes.map((l) => `
+         <tr>
+           <td>${esc(l.intitule)}</td>
+           <td class="synth__periode">${esc(l.periode)}</td>
+           ${comps.map((c) => `<td>${l.competences.includes(c.id) ? '<span class="check" aria-label="oui">✔</span>' : ""}</td>`).join("")}
+         </tr>`).join("")}
+       </tbody>`).join("")}
+       <tfoot><tr><td>Total (${lignes.length} réalisations)</td><td></td>${comps.map((c) => `<td>${count(c.id)}</td>`).join("")}</tr></tfoot>`);
     html("#synth-legend", comps.map((c) => `<div><strong>${c.id}</strong>${esc(c.nom)}</div>`).join(""));
 
-    // Contrôle de couverture : le référentiel exige toutes les compétences
+    // Contrôle de couverture : le référentiel exige toutes les compétences du bloc 1
     const manquantes = comps.filter((c) => !count(c.id));
-    const nbVenir = D.realisations.length - R.length;
-    html("#coverage", (manquantes.length
-      ? `<div class="alert alert--warn">⚠️ ${manquantes.length > 1 ? "Compétences non couvertes" : "Compétence non couverte"} : ${manquantes.map((c) => `<strong>${c.id}</strong>`).join(", ")}. ${manquantes.length > 1 ? "Les prochains projets devront les mobiliser." : "Le prochain projet devra la mobiliser."}</div>`
-      : `<div class="alert alert--ok">✔ Les ${comps.length} compétences du bloc 1 sont mobilisées par mes ${R.length} réalisations.</div>`) +
-      (nbVenir ? `<p class="form__note">${plural(nbVenir, "projet")} à venir, ajouté${nbVenir > 1 ? "s" : ""} au tableau dès ${nbVenir > 1 ? "leur" : "sa"} réalisation.</p>` : ""));
+    html("#coverage", manquantes.length
+      ? `<div class="alert alert--warn">⚠️ ${manquantes.length > 1 ? "Compétences non couvertes" : "Compétence non couverte"} : ${manquantes.map((c) => `<strong>${c.id}</strong>`).join(", ")}. ${manquantes.length > 1 ? "Les prochaines réalisations devront les mobiliser." : "La prochaine réalisation devra la mobiliser."}</div>`
+      : `<div class="alert alert--ok">✔ Les ${comps.length} compétences du bloc 1 sont mobilisées par mes ${lignes.length} réalisations.</div>`);
   }
 
   /* ================= PAGE : PROJETS ================= */
