@@ -109,11 +109,11 @@
     })();
 
     // Chiffres clés — calculés depuis data.js, donc toujours justes
-    const couvertes = new Set(D.tableauSynthese.flatMap((s) => s.lignes.flatMap((l) => l.competences))).size;
+    const couvertes = new Set((D.tableauSynthese || []).flatMap((s) => s.lignes.flatMap((l) => l.competences))).size;
     const certifsOk = D.certifications.filter((c) => c.statut === "Obtenue").length;
     html("#stats", [
       [`${realisees().length}/${D.realisations.length}`, "Projets réalisés", "projets.html"],
-      [`${couvertes}/${D.competencesE5.length}`, "Compétences du bloc 1 couvertes", "epreuves.html#synthese"],
+      [`${couvertes}/${D.competencesE5.length}`, "Compétences du bloc 1 couvertes", "epreuves.html"],
       [D.veille.articles.length, "Articles dans ma veille", "veille.html"],
       certifsOk ? [certifsOk, certifsOk > 1 ? "Certifications obtenues" : "Certification obtenue", "certifications.html"]
                 : [D.epreuves.length, "Épreuves préparées (E5 · E6 · E7)", "epreuves.html"]
@@ -172,45 +172,31 @@
 
   /* ================= PAGE : ÉPREUVES ================= */
   function renderEpreuves() {
-    html("#epreuves-list", D.epreuves.map((e) => `
+    // Couverture du bloc 1, calculée depuis le tableau de synthèse officiel (js/data/epreuves.js)
+    const lignes = (D.tableauSynthese || []).flatMap((s) => s.lignes);
+    const couvertes = D.competencesE5.filter((c) => lignes.some((l) => l.competences.includes(c.id)));
+    html("#epreuves-list", D.epreuves.map((e) => {
+      const comps = e.competences === "bloc1" ? D.competencesE5.map((c) => [c.id, c.nom]) : (e.competences || []).map((n) => ["", n]);
+      return `
       <article class="card epreuve reveal">
         <div class="epreuve__code">${esc(e.code)}</div>
         <div class="epreuve__body">
           <div class="badges">${statutBadge(e.statut)}<span class="chip">${esc(e.format)}</span></div>
           <h2>${esc(e.titre)}</h2>
           <p>${esc(e.description)}</p>
+          ${comps.length ? `
+          <h4 class="mini">Compétences évaluées${e.bloc ? ` · ${esc(e.bloc)}` : ""}</h4>
+          <ul class="comp-list">${comps.map(([id, nom]) => `<li>${id ? `<strong>${id}</strong>` : ""}${esc(nom)}</li>`).join("")}</ul>` : ""}
+          ${e.code === "E5" && lignes.length ? `<p class="coverage-line ${couvertes.length === D.competencesE5.length ? "ok" : "warn"}">
+            ${couvertes.length === D.competencesE5.length ? "✔" : "⚠️"} ${couvertes.length}/${D.competencesE5.length} compétences mobilisées par mes ${lignes.length} réalisations professionnelles (détail dans le tableau de synthèse).</p>` : ""}
           <div class="docs">
-            ${e.code === "E5" ? '<a href="#synthese">📊 Voir le tableau de synthèse</a>' : ""}
+            ${e.code === "E5" ? '<a href="projets.html">🗂️ Voir mes projets</a>' : ""}
             ${e.code === "E7" ? '<a href="veille.html">🔎 Voir ma veille</a>' : ""}
             ${e.documents.map((d) => `<a href="${esc(d.url)}" target="_blank" rel="noopener">📄 ${esc(d.label)}</a>`).join("")}
           </div>
         </div>
-      </article>`).join(""));
-
-    // Tableau de synthèse : repris du fichier officiel (js/data/epreuves.js → tableauSynthese)
-    const comps = D.competencesE5;
-    const lignes = D.tableauSynthese.flatMap((s) => s.lignes);
-    const count = (id) => lignes.filter((l) => l.competences.includes(id)).length;
-    html("#synth-table",
-      `<thead><tr><th>Réalisation professionnelle</th><th>Période</th>${comps.map((c) => `<th title="${esc(c.nom)}">${c.id}</th>`).join("")}</tr></thead>
-       ${D.tableauSynthese.map((s) => `
-       <tbody>
-         <tr class="synth__section"><th colspan="${comps.length + 2}">${esc(s.section)}</th></tr>
-         ${s.lignes.map((l) => `
-         <tr>
-           <td>${esc(l.intitule)}</td>
-           <td class="synth__periode">${esc(l.periode)}</td>
-           ${comps.map((c) => `<td>${l.competences.includes(c.id) ? '<span class="check" aria-label="oui">✔</span>' : ""}</td>`).join("")}
-         </tr>`).join("")}
-       </tbody>`).join("")}
-       <tfoot><tr><td>Total (${lignes.length} réalisations)</td><td></td>${comps.map((c) => `<td>${count(c.id)}</td>`).join("")}</tr></tfoot>`);
-    html("#synth-legend", comps.map((c) => `<div><strong>${c.id}</strong>${esc(c.nom)}</div>`).join(""));
-
-    // Contrôle de couverture : le référentiel exige toutes les compétences du bloc 1
-    const manquantes = comps.filter((c) => !count(c.id));
-    html("#coverage", manquantes.length
-      ? `<div class="alert alert--warn">⚠️ ${manquantes.length > 1 ? "Compétences non couvertes" : "Compétence non couverte"} : ${manquantes.map((c) => `<strong>${c.id}</strong>`).join(", ")}. ${manquantes.length > 1 ? "Les prochaines réalisations devront les mobiliser." : "La prochaine réalisation devra la mobiliser."}</div>`
-      : `<div class="alert alert--ok">✔ Les ${comps.length} compétences du bloc 1 sont mobilisées par mes ${lignes.length} réalisations.</div>`);
+      </article>`;
+    }).join(""));
   }
 
   /* ================= PAGE : PROJETS ================= */
@@ -234,6 +220,9 @@
         <h3>${esc(r.titre)}</h3>
         <p>${esc(r.resume)}</p>
         <div class="chips chips--sm">${r.environnement.slice(0, 4).map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+        ${!aVenir(r) && r.competences.length ? `
+        <h4 class="mini">Compétences mobilisées</h4>
+        <ul class="comp-list comp-list--sm">${r.competences.map((c) => `<li><strong>${c}</strong>${esc(compName(c))}</li>`).join("")}</ul>` : ""}
         ${aVenir(r) ? '<span class="project__soon mono">Bientôt disponible</span>' : `
         <div class="project__actions">
           ${r.procedure ? `<a class="btn btn--small btn--primary" href="${esc(r.procedure)}" download>📄 Procédure (PDF)</a>` : ""}
