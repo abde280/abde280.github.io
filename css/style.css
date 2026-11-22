@@ -455,3 +455,12 @@ ul { list-style: none; }
 .synth td:first-child { min-width: 320px; }
 .synth__periode { white-space: nowrap; font-family: var(--mono); font-size: .8rem !important; color: var(--muted); }
 .synth tbody tr { cursor: default; }
+.comp-list { display: grid; gap: .4rem; margin: .4rem 0 1rem; }
+.comp-list li { display: flex; gap: .6rem; align-items: baseline; font-size: .92rem; color: var(--muted);
+  padding: .45rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-alt); }
+.comp-list li strong { font-family: var(--mono); color: var(--accent-2); font-size: .8rem; flex: 0 0 auto; }
+.comp-list--sm li { font-size: .85rem; padding: .35rem .6rem; }
+.project .mini { margin-top: 1rem; }
+.coverage-line { font-size: .9rem; padding: .6rem .9rem; border-radius: 8px; border: 1px solid; margin-bottom: 1rem; }
+.coverage-line.ok { color: var(--accent-2) !important; background: rgba(16,185,129,.08); }
+.coverage-line.warn { color: #f59e0b !important; background: rgba(245,158,11,.08); }
