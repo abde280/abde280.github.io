@@ -24,7 +24,7 @@ Object.assign(PORTFOLIO, {
     presentation: [
       "Après l’obtention d’un baccalauréat professionnel en électricité, suivi d’une année en BTS Électrotechnique, j’ai réalisé que, malgré mon intérêt pour ce domaine, je ne souhaitais pas en faire mon métier à long terme. Souhaitant m’orienter vers un domaine qui correspond davantage à mes centres d’intérêt et à mes aspirations professionnelles, j’ai décidé de poursuivre mes études en BTS SIO, option SISR, en alternance au sein du Groupe GIFT.",
       "Je m’intéresse principalement aux systèmes et aux réseaux informatiques. J’apprécie particulièrement le fait d’analyser les problèmes techniques, d’en comprendre l’origine et d’y apporter des solutions concrètes.",
-      "Aujourd’hui, mes missions consistent notamment à traiter quotidiennement des tickets d’assistance informatique. Mon objectif est d’approfondir mes connaissances techniques et de développer mes compétences dans l’administration des systèmes et des réseaux afin d’évoluer professionnellement dans ce domaine."
+      "Aujourd’hui, mes missions consistent notamment à traiter quotidiennement des tickets d’assistance informatique. À l’issue de mon BTS SIO, je souhaite poursuivre mes études en licence AIS (Administrateur d’infrastructures sécurisées) afin d’approfondir mes connaissances techniques et de développer mes compétences dans l’administration et la sécurisation des systèmes et des réseaux informatiques."
     ],
     ville: "Chartres / Île-de-France",
     photo: "images/photo.jpg",      // ta photo dans /images (sinon tes initiales s'affichent)
