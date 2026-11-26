@@ -43,7 +43,7 @@ Object.assign(PORTFOLIO, {
     "Le BTS Services Informatiques aux Organisations propose deux options : SLAM, principalement orientée vers la conception, le développement et la maintenance d’applications, et SISR, axée sur l’administration des systèmes, des réseaux et la sécurisation des infrastructures informatiques. J’ai choisi l’option SISR parce que je suis davantage attiré par les systèmes et les réseaux. Ce qui me plaît particulièrement, c’est de comprendre l’origine des problèmes techniques et de trouver des solutions pour les résoudre.",
   /* ===================== L'ÉCOLE ===================== */
   ecole: {
-    nom: "Schola Nova",
+    nom: "Schola Nova", logo: "images/logo-schola-nova.png",
     description: "École privée parisienne qui forme uniquement en alternance, reconnue Entreprise Solidaire d'Utilité Sociale (ESUS) et certifiée Qualiopi. Sa mission : aider chaque étudiant à trouver à la fois sa formation et son emploi.",
     infos: [
       { label: "Adresse", valeur: "51 quai de la Seine, 75019 Paris" },
@@ -57,7 +57,7 @@ Object.assign(PORTFOLIO, {
      type : "Alternance" ou "Stage" */
   entreprise: {
     type: "Alternance",
-    nom: "Groupe GIFT Education",
+    nom: "Groupe GIFT Education", logo: "images/logo-gift.png",
     description: "Groupe de formation présent depuis 30 ans, qui réunit 8 écoles — dont l'IAAG (Institut Aéronautique Amaury de la Grange) — et plus de 5 000 étudiants sur une vingtaine de campus. Les écoles partagent des fonctions support communes.",
     role:
       "Assistant applicatifs et infrastructure réseaux depuis octobre 2025. Je traite les incidents et le support utilisateurs " +
