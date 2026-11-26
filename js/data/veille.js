@@ -14,7 +14,7 @@ Object.assign(PORTFOLIO, {
     problematique: "La double authentification suffit-elle à protéger les comptes des utilisateurs ?",
     pourquoi:
       "En alternance, je gère les comptes utilisateurs sur Microsoft Entra ID, là où la MFA se configure. " +
-      "C'est un sujet précis, qui touche tout le monde au quotidien, et qui me prépare à l'épreuve E7 de cybersécurité.",
+      "C'est un sujet précis, qui touche tout le monde au quotidien, et qui me prépare à l'épreuve E7 de cybersécurité. Pour suivre ce sujet, je m'informe principalement sur le site IT-Connect (it-connect.fr) et grâce à des alertes Google Alerts sur l'actualité de la MFA.",
     axes: [
       "La MFA devient obligatoire (Microsoft, Google…)",
       "Comment les pirates la contournent",
