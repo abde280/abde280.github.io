@@ -125,7 +125,7 @@
     ].map(([n, label, href]) => `<a class="stat card reveal" href="${href}"><strong>${n}</strong><span>${label}</span></a>`).join(""));
 
     // À propos
-    set("#about-presentation", p.presentation);
+    html("#about-presentation", [].concat(p.presentation).map((t) => `<p>${esc(t)}</p>`).join(""));
     const photo = $("#about-photo");
     const img = new Image();
     img.alt = `Photo de ${fullName}`;
