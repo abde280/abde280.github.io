@@ -1,445 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-    /* Avant le 1er rendu : thème sauvegardé (plus de flash clair en mode sombre),
-       classe .js (sans JS, rien n'est caché), volet de transition si on arrive
-       d'une autre page du kit. */
-    (function (h) {
-        h.classList.add('js');
-        try {
-            var t = localStorage.getItem('theme');
-            if (!t && window.matchMedia) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            if (t) h.setAttribute('data-theme', t);
-            var n = sessionStorage.getItem('kit-nav');
-            if (n) {
-                sessionStorage.removeItem('kit-nav');
-                if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    h.classList.add('shutter-in');
-                    h.style.setProperty('--shutter-label', JSON.stringify(n));
-                }
-            }
-        } catch (e) {}
-    })(document.documentElement);
-    </script>
-    <title>Shabdpreet Singh | Portfolio</title>
-    <meta name="description" content="Portfolio de Shabdpreet Singh — BTS SIO SISR en alternance chez ALLIANC3. Supervision, réseaux, infrastructure. Monté pièce par pièce, documenté pour tenir.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-    <link rel="apple-touch-icon" href="./fichiers/icon-192.png">
-    <link rel="canonical" href="https://shab14.github.io/Mon-Portfolio/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Shabdpreet Singh | Portfolio">
-    <meta property="og:description" content="Portfolio de Shabdpreet Singh, étudiant BTS SIO SISR en alternance chez ALLIANC3.">
-    <meta name="theme-color" content="#D42B1E">
-
-    <meta property="og:image" content="https://shab14.github.io/Mon-Portfolio/fichiers/og-image.png">
-    <meta property="og:image:alt" content="SH-14, le robot pilote du portfolio, sur la plaque rouge du kit — Shabdpreet Singh, BTS SIO SISR en alternance chez ALLIANC3">
-    <meta property="og:url" content="https://shab14.github.io/Mon-Portfolio/">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://shab14.github.io/Mon-Portfolio/fichiers/og-image.png">
-    <meta name="twitter:image:alt" content="SH-14, le robot pilote du portfolio, sur la plaque rouge du kit — Shabdpreet Singh, BTS SIO SISR en alternance chez ALLIANC3">
-    <meta name="twitter:title" content="Shabdpreet Singh | Portfolio">
-    <meta name="twitter:description" content="Portfolio de Shabdpreet Singh, étudiant BTS SIO SISR en alternance chez ALLIANC3.">
-    <link rel="manifest" href="./site.webmanifest">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Shabdpreet Singh",
-      "url": "https://shab14.github.io/Mon-Portfolio/",
-      "jobTitle": "Étudiant BTS SIO SISR en alternance",
-      "worksFor": { "@type": "Organization", "name": "ALLIANC3" },
-      "affiliation": { "@type": "EducationalOrganization", "name": "Schola Nova", "address": { "@type": "PostalAddress", "streetAddress": "51 quai de la Seine", "postalCode": "75019", "addressLocality": "Paris", "addressCountry": "FR" } },
-      "alumniOf": { "@type": "EducationalOrganization", "name": "IAAG - Institut Aéronautique Amaury de la Grange" },
-      "knowsAbout": ["Supervision réseau", "Centreon", "Administration systèmes", "Cybersécurité", "Infrastructure", "Linux", "Windows Server"],
-      "sameAs": [
-        "https://github.com/shab14",
-        "https://www.linkedin.com/in/shabdpreet-singh-401012376/"
-      ],
-      "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" }
-    }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil — Portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio BTS SIO option SISR — Épreuve E5">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 </head>
-<body>
-    <a class="skip-link" href="#main">Aller au contenu</a>
-    <div class="read-progress"></div>
-    <nav>
-        <div class="nav-container">
-            <a href="./index.html" class="logo">
-                <span class="logo-mark"><span class="lm-s">S</span><span class="lm-v" aria-hidden="true"></span></span>
-                <span class="logo-text">Shabdpreet Singh</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="./index.html">Accueil</a></li>
-                <li><a href="./epreuve.html">Épreuves</a></li>
-                <li><a href="./projet.html">Projets</a></li>
-                <li><a href="./veille.html">Veille</a></li>
-                <li><a href="./certifs.html">Certifications</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">
-                    <span class="moon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></span>
-                    <span class="sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="8" y="8" width="8" height="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg></span>
-                </button>
-            </div>
+<body data-page="accueil">
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="nav" id="nav"></header>
+  <main id="main">
+    <section class="hero" id="accueil">
+      <canvas id="network-bg" aria-hidden="true"></canvas>
+      <div class="container hero__content">
+        <span class="tag" id="hero-badge"></span>
+        <h1 class="hero__name" id="hero-name"></h1>
+        <p class="hero__typed mono"><span class="prompt">&gt;</span> <span id="typed"></span><span class="cursor">_</span></p>
+        <p class="hero__intro" id="hero-intro"></p>
+        <div class="hero__actions">
+          <a href="projets.html" class="btn btn--primary">Voir mes projets</a>
+          <a href="epreuves.html" class="btn btn--ghost">Mes épreuves</a>
+          <a href="veille.html" class="btn btn--ghost">Ma veille</a>
+          <a href="#" class="btn btn--ghost" id="cv-btn" target="_blank" rel="noopener">Mon CV ↓</a>
         </div>
-    </nav>
+      </div>
+    </section>
 
-    <main id="main">
-        <section class="hero hero-stage hazard-bottom">
-            <div class="hero-plate" aria-hidden="true"></div>
-            <span class="reg tl" aria-hidden="true"></span>
-            <span class="reg br" aria-hidden="true"></span>
-            <div class="hero-inner">
-                <div class="hero-text">
-                    <span class="hero-eyebrow"><span class="dot"></span> BTS SIO SISR · 2e année en alternance</span>
-                    <h1><span class="name-line"><span>Shabdpreet</span></span><span class="name-line name-outline"><span>Singh</span></span></h1>
-                    <p class="hero-roles" aria-hidden="true"><span class="rp">&gt;</span> <span class="role-word" data-roles="je supervise,j'administre,je sécurise,je dépanne,je documente">je supervise</span><span class="role-caret"></span></p>
-                    <p class="lede">Étudiant en BTS SIO option SISR, en alternance chez ALLIANC3. Je monte des infrastructures comme des kits : <strong>pièce par pièce, proprement, et ça doit tenir</strong>. Quand ça casse, je répare — et je documente pour que ça ne recasse pas.</p>
-                    <p class="infos-rapides">
-                        <span><b>LOC</b>Paris, France</span>
-                        <span><b>ÉCOLE</b>Schola Nova</span>
-                        <span><b>SPÉ</b>SISR</span>
-                        <span><b>ENTREPRISE</b>ALLIANC3</span>
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="./projet.html" class="btn btn-primary">Voir mes projets</a>
-                        <a href="./epreuve.html" class="btn btn-outline">Mes épreuves</a>
-                        <a href="./veille.html" class="btn btn-outline">Ma veille IT</a>
-                    </div>
-                    <div class="cta-buttons downloads">
-                        <a href="./fichiers/CV_Shabdpreet_Singh.pdf" class="btn btn-outline" download>Mon CV <span class="arr">↓</span></a>
-                        <a href="https://www.linkedin.com/in/shabdpreet-singh-401012376/" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
-                        <a href="https://github.com/shab14" class="btn btn-outline" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
-                    </div>
-                    <p class="tour-line">
-                        <button class="tour-cta" type="button" data-tour-start>
-                            <span class="tour-cta-ico" aria-hidden="true"></span>Visite guidée<span class="tour-cta-time">≈ 1 min · l’essentiel</span>
-                        </button>
-                    </p>
-                </div>
+    <section class="section section--tight">
+      <div class="container"><div class="stats" id="stats"></div></div>
+    </section>
 
-                <div class="panel-stage">
-                <figure class="sh14-video" data-pl-station aria-hidden="true">
-                    <video class="sh14-video-media" muted loop playsinline preload="none" disablepictureinpicture
-                           width="720" height="900" poster="./fichiers/sh14/sh14-kit.png">
-                        <source src="./fichiers/sh14/sh14-kit.webm" type="video/webm">
-                    </video>
-                    <img class="sh14-video-still" src="./fichiers/sh14/sh14-kit.png" alt="" width="720" height="900" decoding="async">
-                </figure>
-                <div class="status-panel" id="statusPanel" aria-hidden="true" data-live>
-                    <div class="status-panel-head">
-                        <span class="status-panel-title"><span class="live-dot"></span>SYSTÈMES — LIVE</span>
-                        <span class="status-uptime" id="uptime" title="depuis le dernier déploiement">uptime 00:00:00</span>
-                    </div>
-                    <!-- Lignes « data-check » : vérifiées pour de vrai par script.js
-                         (API GitHub, requêtes HEAD avec code HTTP, taille et latence). -->
-                    <div class="status-row" data-svc="1" data-check="github" data-repo="shab14/Mon-Portfolio">
-                        <span class="svc"><span class="status-led"></span><span class="svc-name">portfolio.git</span><span class="svc-meta">GitHub Pages</span></span>
-                        <span class="status-pill">UP</span>
-                    </div>
-                    <div class="status-row" data-svc="2" data-check="head" data-url="./fichiers/CV_Shabdpreet_Singh.pdf">
-                        <span class="svc"><span class="status-led"></span><span class="svc-name">cv.pdf</span><span class="svc-meta">fichiers/</span></span>
-                        <span class="status-pill">UP</span>
-                    </div>
-                    <div class="status-row" data-svc="3" data-check="head" data-url="./fichiers/Projet_Centreon.pdf">
-                        <span class="svc"><span class="status-led"></span><span class="svc-name">doc-centreon</span><span class="svc-meta">fichiers/</span></span>
-                        <span class="status-pill">UP</span>
-                    </div>
-                    <div class="status-row" data-svc="4" data-check="head" data-url="./fichiers/Tableau_synthese_E4_BTS_SIO.xlsx">
-                        <span class="svc"><span class="status-led"></span><span class="svc-name">tableau-e5</span><span class="svc-meta">fichiers/</span></span>
-                        <span class="status-pill">UP</span>
-                    </div>
-                    <div class="status-row" data-svc="5">
-                        <span class="svc"><span class="status-led warn"></span><span class="svc-name">homelab</span><span class="svc-meta">phase 0/4</span></span>
-                        <span class="status-pill warn">BUILD</span>
-                    </div>
-                    <div class="status-row" data-svc="6">
-                        <span class="svc"><span class="status-led"></span><span class="svc-name">pilote</span><span class="svc-meta">SH-14 · LVL 19</span></span>
-                        <span class="status-pill">UP</span>
-                    </div>
-                    <div class="status-log"><span id="statusLog"></span><span class="caret" aria-hidden="true"></span></div>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="metrics-wrap" aria-label="Quelques chiffres">
-            <div class="metrics">
-                <div class="metric reveal" data-i="1">
-                    <div class="num"><span data-count="13">13</span></div>
-                    <div class="lbl">Certifications obtenues</div>
-                    <div class="sub">numériques &amp; IA</div>
-                </div>
-                <div class="metric reveal" data-i="2">
-                    <div class="num"><span data-count="12">12</span></div>
-                    <div class="lbl">Parcours Anthropic</div>
-                    <div class="sub">IA · Claude · MCP</div>
-                </div>
-                <div class="metric reveal" data-i="3">
-                    <div class="num"><span data-count="2">2</span></div>
-                    <div class="lbl">Projets livrés</div>
-                    <div class="sub">Centreon · réseau bureau</div>
-                </div>
-                <div class="metric reveal" data-i="4">
-                    <div class="num">2025<span class="dash">—</span>27</div>
-                    <div class="lbl">Alternance en cours</div>
-                    <div class="sub">SISR @ ALLIANC3</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title" data-step="01"><span class="st-text">À propos</span></h2>
-            <div class="about-intro">
-                <figure class="portrait reveal" data-i="1">
-                    <div class="portrait-stage">
-                    <div class="pl-peek" data-pilote="peek" aria-hidden="true"></div>
-                    <div class="portrait-frame">
-                        <img src="./fichiers/photo.jpg" alt="Portrait de Shabdpreet Singh" loading="lazy" data-skeleton
-                             onerror="this.closest('.portrait-frame').classList.add('no-photo')">
-                        <span class="p-corner tl" aria-hidden="true"></span>
-                        <span class="p-corner tr" aria-hidden="true"></span>
-                        <span class="p-corner bl" aria-hidden="true"></span>
-                        <span class="p-corner br" aria-hidden="true"></span>
-                        <span class="portrait-badge"><span class="status-led"></span>online</span>
-                        <span class="portrait-placeholder" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"><rect x="8" y="4" width="8" height="8"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>
-                            <em>photo bientôt</em>
-                        </span>
-                    </div>
-                    </div>
-                    <figcaption><b>FIG. 01</b>Shabdpreet Singh · <span>BTS SIO SISR</span></figcaption>
-                </figure>
-                <div class="about-intro-text">
-                <p class="lead-paragraph reveal" data-i="2">Je m'appelle Shabdpreet Singh, 19 ans, en 2e année de BTS SIO option SISR à Schola Nova (Paris 19e), en alternance chez ALLIANC3. Tout est parti d'une question posée devant un écran qui marchait : <em>pourquoi ça marche ?</em> J'ai démonté, cassé, réparé, recommencé — et compris que derrière chaque service « qui tourne », il y a quelqu'un qui l'a pensé, câblé et surveillé. C'est ce quelqu'un que je suis en train de devenir. Curieux de nature, rigoureux par méthode : je documente tout, parce qu'un travail qu'on ne peut pas reprendre n'est pas un travail fini.</p>
-                <div class="term reveal" data-i="3" aria-hidden="true">
-                    <div class="term-head">
-                        <span class="term-dots"><i></i><i></i><i></i></span>
-                        <span class="term-title">console — shab@kit</span>
-                    </div>
-                    <div class="term-body">
-                        <p class="term-line"><span class="prompt">$</span>whoami</p>
-                        <p class="term-line out">shabdpreet singh — 19 ans</p>
-                        <p class="term-line"><span class="prompt">$</span>cat profil.txt</p>
-                        <p class="term-line out">BTS SIO SISR — 2e année @ Schola Nova</p>
-                        <p class="term-line out">alternance @ <span class="accent2">ALLIANC3</span></p>
-                        <p class="term-line out">support IT · réseaux · supervision</p>
-                        <p class="term-line"><span class="prompt">$</span>stats --pilote</p>
-                        <p class="term-line out">[<span class="ok2">LVL 19</span>] curieux · rigoureux · apprend vite</p>
-                        <p class="term-line"><span class="prompt">$</span>next</p>
-                        <p class="term-line out"><span class="warn2">homelab</span> — en build · <span class="ok2">session BTS 2027</span></p>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="about-grid">
-                <div class="apropos-bloc reveal" data-i="1">
-                    <h3><span class="ico">A-01</span> Le BTS SIO</h3>
-                    <p>Le BTS Services Informatiques aux Organisations propose deux voies : SLAM pour ceux qui écrivent le code, <strong>SISR</strong> pour ceux qui font tourner tout le reste — systèmes, réseaux, sécurité. J'ai choisi SISR, en alternance sur deux ans. Quand une appli plante, on cherche le développeur ; quand le réseau tombe, tout le monde se tourne vers nous. J'aime cette responsabilité-là.</p>
-                </div>
-                <div class="apropos-bloc school-bloc reveal" data-i="2">
-                    <h3><span class="ico">A-02</span> L'école — Schola Nova</h3>
-                    <figure class="school-plate">
-                        <div class="school-stage">
-                            <div class="school-frame">
-                                <img src="./fichiers/schola-nova-logo.png" alt="Logo Schola Nova — Apprendre ensemble" width="320" height="111" loading="lazy" data-skeleton>
-                                <span class="p-corner tl" aria-hidden="true"></span>
-                                <span class="p-corner tr" aria-hidden="true"></span>
-                                <span class="p-corner bl" aria-hidden="true"></span>
-                                <span class="p-corner br" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <figcaption><b>FIG. 02</b>Schola Nova · <span>Paris 19e</span></figcaption>
-                    </figure>
-                    <div class="school-body">
-                        <p>Après une 1re année à l'IAAG, je fais ma 2e année de BTS SIO option SISR à <strong>Schola Nova</strong> — c'est là que je prépare les épreuves de la session 2027. Une école sociale et solidaire qui ne forme qu'en alternance, avec une mission claire&nbsp;: aider les jeunes à trouver leur place dans la société par une formation et un emploi en alternance.</p>
-                        <dl class="school-facts">
-                            <div><dt>Adresse</dt><dd>51 quai de la Seine, 75019 Paris</dd></div>
-                            <div><dt>Statut</dt><dd>École sociale et solidaire · agrément ESUS</dd></div>
-                            <div><dt>Modèle</dt><dd>100&nbsp;% alternance · gratuite et rémunérée</dd></div>
-                            <div><dt>Formations</dt><dd>Du BTS au Bac+5</dd></div>
-                            <div><dt>Ma formation</dt><dd>BTS SIO option SISR · 2e année</dd></div>
-                            <div><dt>Devise</dt><dd>« Apprendre ensemble »</dd></div>
-                        </dl>
-                        <div class="cta-buttons">
-                            <a href="http://www.scholanova.fr" class="btn btn-outline" target="_blank" rel="noopener">Le site de l'école <span class="arr">↗</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="apropos-bloc reveal" data-i="3">
-                    <h3><span class="ico">A-03</span> L'entreprise — ALLIANC3</h3>
-                    <span class="brand-chip"><img src="./fichiers/allianc3-logo.png" alt="Logo ALLIANC3" width="150" height="37" loading="lazy" data-skeleton></span>
-                    <p>ALLIANC3 est une Entreprise de Services du Numérique (ESN) spécialisée Data, IA et Salesforce, dédiée à l'accélération numérique de ses clients — conseil, assistance technique, formation, pour des organisations de tous secteurs. Pour moi, c'est le meilleur endroit où apprendre : là où le métier se pratique en production, avec de vrais utilisateurs et de vrais enjeux.</p>
-                </div>
-                <div class="apropos-bloc reveal" data-i="4">
-                    <h3><span class="ico">A-04</span> Mon rôle</h3>
-                    <p>Du <strong>support informatique</strong> au quotidien : un collaborateur bloqué, un incident à résoudre, un ticket qui n'attend pas. C'est là que les cours de SISR cessent d'être de la théorie — un ticket n'a jamais la politesse d'arriver comme dans le manuel. Diagnostiquer, corriger, expliquer, documenter : chaque incident traité est une compétence gagnée. Et une ligne de plus dans mon tableau de synthèse E5.</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title" data-step="02" data-pl="focus|Radar calibré. Stats à jour."><span class="st-text">Compétences</span></h2>
-
-            <div class="radar-wrap reveal" data-live>
-                <svg class="radar" viewBox="-42 0 284 188" aria-hidden="true" focusable="false">
-                    <defs>
-                        <clipPath id="radarClip"><polygon points="100,20 176.1,75.3 147,164.7 53,164.7 23.9,75.3"/></clipPath>
-                    </defs>
-                    <g clip-path="url(#radarClip)"><g class="radar-sweep">
-                        <path d="M100,100 L100,10 A90,90 0 0,1 131,15.5 Z"/>
-                        <line x1="100" y1="100" x2="131" y2="15.5"/>
-                    </g></g>
-                    <polygon class="grid-line" points="100,20 176.1,75.3 147,164.7 53,164.7 23.9,75.3"/>
-                    <polygon class="grid-line" points="100,46.7 150.7,83.5 131.3,143.1 68.7,143.1 49.3,83.5"/>
-                    <polygon class="grid-line" points="100,73.3 125.4,91.8 115.7,121.6 84.3,121.6 74.6,91.8"/>
-                    <line class="axis" x1="100" y1="100" x2="100" y2="20"/>
-                    <line class="axis" x1="100" y1="100" x2="176.1" y2="75.3"/>
-                    <line class="axis" x1="100" y1="100" x2="147" y2="164.7"/>
-                    <line class="axis" x1="100" y1="100" x2="53" y2="164.7"/>
-                    <line class="axis" x1="100" y1="100" x2="23.9" y2="75.3"/>
-                    <polygon class="data" points="100,40 151.7,83.2 125.9,135.6 62.4,151.8 54.3,85.2"/>
-                    <rect class="dot" x="97.5" y="37.5" width="5" height="5"/>
-                    <rect class="dot" x="149.2" y="80.7" width="5" height="5"/>
-                    <rect class="dot" x="123.4" y="133.1" width="5" height="5"/>
-                    <rect class="dot" x="59.9" y="149.3" width="5" height="5"/>
-                    <rect class="dot" x="51.8" y="82.7" width="5" height="5"/>
-                    <text class="axis-label" data-say="Réseau : 75 %. Le cœur du métier, VLAN compris." x="100" y="12" text-anchor="middle">Réseau</text>
-                    <text class="axis-label" data-say="Systèmes : 68 %. Linux et Windows Server, des deux côtés." x="181" y="73" text-anchor="start">Systèmes</text>
-                    <text class="axis-label" data-say="Sécurité : 55 %. En montée — E7 en ligne de mire." x="150" y="179" text-anchor="middle">Sécurité</text>
-                    <text class="axis-label" data-say="Support : 80 %. Le terrain, chaque jour chez Allianc3." x="50" y="179" text-anchor="middle">Support</text>
-                    <text class="axis-label" data-say="Scripting : 60 %. Python, et le shell qui va avec." x="19" y="73" text-anchor="end">Scripting</text>
-                </svg>
-                <div class="radar-legend">
-                    <div class="row" data-say="Réseau : 75 %. Le cœur du métier, VLAN compris."><span class="lbl">Réseau <b>75%</b></span><span class="track"><i style="--w:75%"></i></span></div>
-                    <div class="row" data-say="Systèmes : 68 %. Linux et Windows Server, des deux côtés."><span class="lbl">Systèmes (Win/Linux) <b>68%</b></span><span class="track"><i style="--w:68%"></i></span></div>
-                    <div class="row" data-say="Sécurité : 55 %. En montée — E7 en ligne de mire."><span class="lbl">Sécurité <b>55%</b></span><span class="track"><i style="--w:55%"></i></span></div>
-                    <div class="row" data-say="Support : 80 %. Le terrain, chaque jour chez Allianc3."><span class="lbl">Support / incident <b>80%</b></span><span class="track"><i style="--w:80%"></i></span></div>
-                    <div class="row" data-say="Scripting : 60 %. Python, et le shell qui va avec."><span class="lbl">Scripting <b>60%</b></span><span class="track"><i style="--w:60%"></i></span></div>
-                </div>
-            </div>
-
-            <div class="competences-grid">
-                <div class="competence-bloc reveal" data-i="1">
-                    <h3><span class="ico">B-01</span> Hard skills</h3>
-                    <p><strong>Langages</strong></p>
-                    <div class="skill-tags"><span>Python</span><span>C</span><span>HTML/CSS</span></div>
-                    <p style="margin-top:.7rem"><strong>Systèmes &amp; réseaux</strong></p>
-                    <div class="skill-tags"><span>Linux (AlmaLinux)</span><span>Windows Server</span><span>Active Directory</span><span>Cisco · Packet Tracer</span><span>Centreon</span><span>MariaDB</span></div>
-                    <p style="margin-top:.7rem"><strong>Outils &amp; OS</strong></p>
-                    <div class="skill-tags"><span>Arduino</span><span>Pack Office</span><span>Canva</span><span>SolidWorks</span><span>Windows 10/11</span><span>macOS</span></div>
-                </div>
-                <div class="competence-bloc reveal" data-i="2">
-                    <h3><span class="ico">B-02</span> Soft skills</h3>
-                    <div class="skill-tags"><span>Vif d'esprit</span><span>Travail en équipe</span><span>Curiosité</span><span>Rigueur</span></div>
-                </div>
-                <div class="competence-bloc reveal" data-i="3">
-                    <h3><span class="ico">B-03</span> Langues</h3>
-                    <div class="skill-tags"><span>Français — natif</span><span>Anglais — bilingue</span><span>Punjabi / Hindi — natif</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title" data-step="03" data-pl="check|Chaque étape validée."><span class="st-text">Parcours</span></h2>
-            <ul class="timeline">
-                <li class="reveal current" data-i="1">
-                    <span class="when">2026 — 2027</span>
-                    <div class="title">BTS SIO option SISR — 2e année · Schola Nova, Paris</div>
-                    <div class="desc">En alternance chez ALLIANC3 — en cours, examen en session 2027.</div>
-                </li>
-                <li class="reveal" data-i="2">
-                    <span class="when">2025 — 2026</span>
-                    <div class="title">BTS SIO option SISR — 1re année · IAAG, Paris</div>
-                    <div class="desc">Institut Aéronautique Amaury de la Grange, en alternance chez ALLIANC3.</div>
-                </li>
-                <li class="reveal" data-i="3">
-                    <span class="when">2026</span>
-                    <div class="title">Anthropic Academy — 12 certifications</div>
-                    <div class="desc">IA, Claude, Claude Code, MCP — en parallèle du BTS.</div>
-                </li>
-                <li class="reveal" data-i="4">
-                    <span class="when">2025</span>
-                    <div class="title">Certifications PIX</div>
-                    <div class="desc">Lycée Polyvalent Adolphe Chérioux.</div>
-                </li>
-                <li class="reveal" data-i="5">
-                    <span class="when">2022 — 2025</span>
-                    <div class="title">Baccalauréat STI2D, spécialité SIN</div>
-                    <div class="desc">Lycée Polyvalent Adolphe Chérioux, Vitry-sur-Seine — Mention Assez Bien.</div>
-                </li>
-                <li class="reveal" data-i="6">
-                    <span class="when">2022</span>
-                    <div class="title">Diplôme National du Brevet</div>
-                    <div class="desc">Collège Pasteur, Villejuif — Mention Très Bien.</div>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2 class="section-title" data-step="04" data-pl="happy|Du terrain, du vrai."><span class="st-text">Expériences</span></h2>
-            <ul class="timeline">
-                <li class="reveal current" data-i="1">
-                    <span class="when">2025 — 2027</span>
-                    <div class="title">ALLIANC3 — Alternance BTS SIO SISR</div>
-                    <div class="desc">Support utilisateurs au quotidien&nbsp;: incidents, demandes d'assistance, accompagnement des collaborateurs — chaque intervention documentée.</div>
-                </li>
-                <li class="reveal" data-i="2">
-                    <span class="when">2024</span>
-                    <div class="title">ALLIANC3 — Stage d'observation</div>
-                    <div class="desc">ESN dédiée à l'accélération numérique. Aide à la direction artistique de sites internet, plaquettes commerciales.</div>
-                </li>
-                <li class="reveal" data-i="3">
-                    <span class="when">2024 — 2025</span>
-                    <div class="title">Just Faces — Mannequin</div>
-                    <div class="desc">Shootings photo ; travail avec stylistes, maquilleurs et photographes professionnels.</div>
-                </li>
-                <li class="reveal" data-i="4">
-                    <span class="when">2022</span>
-                    <div class="title">Oracom — Stage d'observation</div>
-                    <div class="desc">Société d'édition de presse. Assistance à la rédactrice en chef, logistique des stocks, relecture avant publication.</div>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2 class="section-title" data-step="05" data-pl="happy|SLA &lt; 24 h. Je surveille."><span class="st-text">Contact</span></h2>
-            <ul class="contact-list">
-                <li class="reveal copyable" data-i="1" data-copy="Shabdpreetsingh2@gmail.com"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg></span> <a href="mailto:Shabdpreetsingh2@gmail.com">Shabdpreetsingh2@gmail.com</a><span class="copy-hint">copié ✓</span></li>
-                <li class="reveal copyable" data-i="2" data-copy="+33616881710"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span> <a href="tel:+33616881710">+33 6 16 88 17 10</a><span class="copy-hint">copié ✓</span></li>
-                <li class="reveal" data-i="3"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><rect x="9.5" y="7.5" width="5" height="5"/></svg></span> Paris — Île-de-France</li>
-            </ul>
-            <p class="contact-note">Le plus rapide reste l'email. <strong>SLA de réponse : moins de 24h</strong> — jamais dépassé à ce jour.</p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="https://github.com/shab14" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/shabdpreet-singh-401012376/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="./fichiers/CV_Shabdpreet_Singh.pdf" download>CV</a>
-            <a href="./hangar.html">Hangar SH-14</a>
+    <section class="section" id="apropos">
+      <div class="container">
+        <h2 class="section__title"><span class="num">01.</span> À propos</h2>
+        <div class="about">
+          <div class="about__photo" id="about-photo"></div>
+          <div class="about__text"><div id="about-presentation"></div><ul class="about__infos" id="about-infos"></ul></div>
         </div>
-        <p>© 2026 Shabdpreet Singh — Portfolio · kit v5 · <a href="./mentions-legales.html">Mentions légales</a></p>
-        <p class="footer-uptime"><span class="status-led"></span>Tous les systèmes sont opérationnels</p>
-        <p class="footer-alt"><button class="kit-bolt" type="button" data-bolt="index" aria-label="Pièce cachée 1 sur 3"><svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="3.5,0.8 8.5,0.8 11.2,6 8.5,11.2 3.5,11.2 0.8,6"/><rect x="4" y="4" width="4" height="4"/></svg></button> En alternance chez <img class="footer-brand" src="./fichiers/allianc3-mark.png" alt="" width="18" height="18" loading="lazy"> <strong>Allianc3</strong></p>
-        <p class="footer-clock" id="clock"></p>
-    </footer>
+        <div class="info-grid">
+          <article class="card reveal"><p class="tag">A-01</p><h3>Le BTS SIO</h3><p id="bts-text"></p></article>
+          <article class="card reveal"><p class="tag">A-02</p><h3 id="ecole-nom"></h3><p id="ecole-desc"></p><dl class="kv" id="ecole-infos"></dl><a id="ecole-site" target="_blank" rel="noopener">Site de l'établissement ↗</a></article>
+          <article class="card reveal"><p class="tag" id="entreprise-type"></p><h3 id="entreprise-nom"></h3><p id="entreprise-desc"></p><h4 class="mini">Mon rôle</h4><p id="entreprise-role"></p><a id="entreprise-site" target="_blank" rel="noopener">Site de l'entreprise ↗</a></article>
+        </div>
+      </div>
+    </section>
 
-    <div class="incident-toast" id="incidentToast" aria-hidden="true">Alerte simulée — <span class="ok2">tous systèmes rétablis ✓</span></div>
-    <button class="scroll-top" id="scrollTop" type="button" aria-label="Remonter en haut">↑</button>
-    <script src="./pilote.js"></script>
-    <script src="./script.js"></script>
+    <section class="section section--alt" id="competences">
+      <div class="container">
+        <h2 class="section__title"><span class="num">02.</span> Compétences</h2>
+        <div class="skills" id="skills"></div>
+        <div class="info-grid info-grid--2">
+          <div class="card reveal"><h3>Centres d'intérêt</h3><div class="chips" id="soft"></div></div>
+          <div class="card reveal"><h3>Langues</h3><ul class="list" id="langues"></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="parcours">
+      <div class="container">
+        <h2 class="section__title"><span class="num">03.</span> Parcours</h2>
+        <div class="two-cols">
+          <div><h3 class="sub-title">Formation</h3><div class="timeline" id="parcours-list"></div></div>
+          <div><h3 class="sub-title">Expériences</h3><div class="timeline" id="experiences-list"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container center">
+        <h2 class="section__title section__title--center">Un échange ?</h2>
+        <p class="section__intro">Une question sur un projet, une proposition d'alternance ou de poursuite d'études : écrivez-moi.</p>
+        <a href="contact.html" class="btn btn--primary">Me contacter</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" data-close aria-label="Fermer">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="js/data/accueil.js"></script>
+  <script src="js/data/epreuves.js"></script>
+  <script src="js/data/projets.js"></script>
+  <script src="js/data/veille.js"></script>
+  <script src="js/data/certifications.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
