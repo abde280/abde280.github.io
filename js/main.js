@@ -141,12 +141,12 @@
     ].filter(([, v]) => v).map(([k, v]) => `<li><strong>${esc(k)}</strong>${esc(v)}</li>`).join(""));
 
     set("#bts-text", D.bts);
-    set("#ecole-nom", D.ecole.nom);
+    set("#ecole-nom", D.ecole.nom); if (D.ecole.logo) $("#ecole-nom").insertAdjacentHTML("beforebegin", `<div class="org-logo"><img src="${esc(D.ecole.logo)}" alt="Logo ${esc(D.ecole.nom)}"></div>`);
     set("#ecole-desc", D.ecole.description);
     html("#ecole-infos", D.ecole.infos.map((i) => `<dt>${esc(i.label)}</dt><dd>${esc(i.valeur)}</dd>`).join(""));
     $("#ecole-site").href = D.ecole.site;
     set("#entreprise-type", `A-03 · ${D.entreprise.type}`);
-    set("#entreprise-nom", D.entreprise.nom);
+    set("#entreprise-nom", D.entreprise.nom); if (D.entreprise.logo) $("#entreprise-nom").insertAdjacentHTML("beforebegin", `<div class="org-logo"><img src="${esc(D.entreprise.logo)}" alt="Logo ${esc(D.entreprise.nom)}"></div>`);
     set("#entreprise-desc", D.entreprise.description);
     set("#entreprise-role", D.entreprise.role);
     $("#entreprise-site").href = D.entreprise.site;
