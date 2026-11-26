@@ -86,7 +86,7 @@ Object.assign(PORTFOLIO, {
   experiences: [
     { periode: "Depuis octobre 2025", titre: "Assistant applicatifs et infrastructure réseaux (alternance)", lieu: "Groupe GIFT, Paris 19ᵉ",
       details: "Incidents et support N1 via GetSup, bornes Wi-Fi Zyxel multi-sites (Nebula Control Center), brassage en baie, réinstallation et préparation de postes Windows 11, accompagnement des nouveaux collaborateurs, comptes Microsoft Entra ID, tickets applicatifs (HubSpot, YPAREO)." },
-    { periode: "2024 — 2025", titre: "Livreur Amazon", lieu: "Marathon (sous-traitant Amazon), Lucé", details: "" },
+    { periode: "2024 — 2025", titre: "Livreur Amazon", lieu: "Marathon (sous-traitant Amazon), Lucé", details: "" }, { periode: "2022 — 2023", titre: "BTS Électrotechnique", lieu: "Lycée Jehan de Beauce, Chartres", details: "" },
     { periode: "2021 — 2022", titre: "Monteur-câbleur (CDD / stage)", lieu: "B2EI, Chartres", details: "Câblage électrique et assemblage d'armoires." }
   ]
 });
