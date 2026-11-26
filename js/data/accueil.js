@@ -20,11 +20,12 @@ Object.assign(PORTFOLIO, {
     intro:
       "Assistant applicatifs et infrastructure réseaux en alternance, étudiant en BTS SIO option SISR. " +
       "J'interviens sur la gestion d'incidents, le support utilisateurs et des missions en réseaux, systèmes et applicatifs.",
-    presentation:
-      "Après un bac pro électricité puis une année de BTS Électrotechnique, j'ai compris une chose : l'électricité me plaisait, " +
-      "mais pas pour toute une vie. Le seul domaine qui m'attirait vraiment, c'était l'informatique. Je me suis donc lancé en BTS SIO " +
-      "option SISR, en alternance au Groupe GIFT. Ce que j'aime, c'est le côté réseau et système : comprendre d'où vient un souci " +
-      "et le régler. Aujourd'hui je traite des tickets au quotidien, et mon objectif est d'aller plus loin, vers le réseau et la cybersécurité.",
+    // Un élément de la liste = un paragraphe
+    presentation: [
+      "Après l’obtention d’un baccalauréat professionnel en électricité, suivi d’une année en BTS Électrotechnique, j’ai réalisé que, malgré mon intérêt pour ce domaine, je ne souhaitais pas en faire mon métier à long terme. Souhaitant m’orienter vers un domaine qui correspond davantage à mes centres d’intérêt et à mes aspirations professionnelles, j’ai décidé de poursuivre mes études en BTS SIO, option SISR, en alternance au sein du Groupe GIFT.",
+      "Je m’intéresse principalement aux systèmes et aux réseaux informatiques. J’apprécie particulièrement le fait d’analyser les problèmes techniques, d’en comprendre l’origine et d’y apporter des solutions concrètes.",
+      "Aujourd’hui, mes missions consistent notamment à traiter quotidiennement des tickets d’assistance informatique. Mon objectif est d’approfondir mes connaissances techniques et de développer mes compétences dans l’administration des systèmes et des réseaux afin d’évoluer professionnellement dans ce domaine."
+    ],
     ville: "Chartres / Île-de-France",
     photo: "images/photo.jpg",      // ta photo dans /images (sinon tes initiales s'affichent)
     cv: "documents/CV.pdf",
@@ -39,8 +40,7 @@ Object.assign(PORTFOLIO, {
   },
   /* ===================== LE BTS ===================== */
   bts:
-    "Le BTS Services Informatiques aux Organisations propose deux options : SLAM pour le développement d'applications, " +
-    "SISR pour les infrastructures — systèmes, réseaux et sécurité. J'ai choisi SISR parce que je préfère le côté réseau et systèmes : ce qui me plaît, c'est de pouvoir résoudre les soucis.",
+    "Le BTS Services Informatiques aux Organisations propose deux options : SLAM, principalement orientée vers la conception, le développement et la maintenance d’applications, et SISR, axée sur l’administration des systèmes, des réseaux et la sécurisation des infrastructures informatiques. J’ai choisi l’option SISR parce que je suis davantage attiré par les systèmes et les réseaux. Ce qui me plaît particulièrement, c’est de comprendre l’origine des problèmes techniques et de trouver des solutions pour les résoudre.",
   /* ===================== L'ÉCOLE ===================== */
   ecole: {
     nom: "Schola Nova",
